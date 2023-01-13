@@ -814,4 +814,14 @@ INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_
 INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation,Legendary) VALUES (720,'HoopaHoopa Unbound','Psychic','Dark',680,80,160,60,170,130,80,6,'True');
 INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation,Legendary) VALUES (721,'Volcanion','Fire','Water',600,80,110,120,130,90,70,6,'True');
 
-select name, attack, defense from pokemon where attack > 70 order by attack desc;
+/*Basic Statistical Functions*/
+SELECT COUNT(number) AS "How many pokemon are there?" FROM pokemon;
+SELECT MAX(Generation) AS "Generations" FROM pokemon;
+SELECT Type_1 AS "How many of each type are there?", COUNT(Type_1) AS "Quantity(Most common to least)" FROM pokemon GROUP BY Type_1 ORDER BY COUNT(Type_1) DESC;
+
+
+/*Personal Points of Interest*/
+SELECT Name AS Gen3_Legendaries FROM pokemon WHERE legendary = "True" AND Generation = 3 AND Name NOT LIKE '%Mega%' AND Name NOT LIKE '%Primal%'; 
+
+SELECT Name AS bestTotalStats, MAX(Total) AS Stats FROM pokemon;
+
